@@ -5,6 +5,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.smc.dao.UserDao;
 import com.smc.dao.impl.ChinesePersonDaoImpl;
+import com.smc.injection.ConstructInjectionBean;
+import com.smc.injection.SetterInjectionBean;
 
 public class MyTest {
 	
@@ -25,6 +27,14 @@ public class MyTest {
 			System.out.println("\n");
 			pDao.displayMap();
 			System.out.println("\n");
+			
+			ConstructInjectionBean constructInject = ac.getBean("constructInjectionBean", ConstructInjectionBean.class);
+			constructInject.display();
+			System.out.println("\n");
+			
+			SetterInjectionBean setterInjectionBean = ac.getBean("setterInjectionBean", SetterInjectionBean.class);
+			setterInjectionBean.display();
+			
 		}catch(Exception e)
 		{
 			System.out.println(e.toString());

@@ -3,6 +3,7 @@
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			xsi:schemaLocation="http://www.springframework.org/schema/beans
 				http://www.springframework.org/schema/beans/spring-beans.xsd">
+			
 			<bean id="UserDao" class="com.smc.dao.impl.UserDaoImpl">
 				<property name="message"><value>Hello! Ioc container!</value></property>
 			</bean>
@@ -41,4 +42,23 @@
 					</map>
 				</property>
 			</bean>
+			
+			<bean id="anotherBean" class="com.smc.injection.AnotherBean">
+				<property name="name"><value>123</value></property>
+			</bean>
+			
+			<bean id="yetAnotherBean" class="com.smc.injection.YetAnotherBean">
+				<property name="name"><value>567</value></property>
+			</bean>
+			
+			<bean id="constructInjectionBean" class="com.smc.injection.ConstructInjectionBean">
+				<constructor-arg><ref bean="anotherBean"/></constructor-arg>
+				<constructor-arg ref="yetAnotherBean" />
+			</bean>
+			
+			<bean id="setterInjectionBean" class="com.smc.injection.SetterInjectionBean">
+				<property name="anotherBean"><ref bean="anotherBean"/></property>
+				<property name="yetAnotherBean"><ref bean="yetAnotherBean"/></property>
+			</bean>
+			
 </beans>
