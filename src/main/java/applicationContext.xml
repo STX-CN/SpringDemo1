@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans.xsd">
+			<bean id="UserDao" class="com.smc.dao.impl.UserDaoImpl">
+				<property name="message"><value>Hello! Ioc container!</value></property>
+			</bean>
+			<bean id="ChinesePersonDaoImpl" class="com.smc.dao.impl.ChinesePersonDaoImpl">
+				<constructor-arg type="java.lang.String"><value>china</value></constructor-arg>
+				<constructor-arg type="int"><value>967</value></constructor-arg>
+				
+				<property name="featureList">
+					<list>
+						<value>item1</value>
+						<value>item2</value>
+						<value>item3</value>
+						<value>item4</value>
+						<value>item5</value>
+					</list>
+				</property>
+				
+				<property name="nationProperty">
+					<props>
+						<prop key="湘">湖南</prop>
+						<prop key="闽">福建</prop>
+						<prop key="赣">江西</prop>
+					</props>
+				</property>
+				
+				<property name="nationMap">
+					<map>
+						<entry>
+							<key><value>638</value></key>
+							<value>唐</value>
+						</entry>
+						<entry>
+							<key><value>928</value></key>
+							<value>宋</value>
+						</entry>
+					</map>
+				</property>
+			</bean>
+</beans>
