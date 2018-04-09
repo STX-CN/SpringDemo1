@@ -61,4 +61,13 @@
 				<property name="yetAnotherBean"><ref bean="yetAnotherBean"/></property>
 			</bean>
 			
+			<bean id="currentTime" class="com.smc.lookup.CurrentTime"
+				scope="prototype"/>
+			<bean id="lookupBean"
+				class="com.smc.lookup.LookupBean"
+				scope="singleton">
+				<lookup-method name="createCurrentTime" bean="currentTime" />
+				<property name="currentTime" ref="currentTime"/>
+			</bean>
+			
 </beans>

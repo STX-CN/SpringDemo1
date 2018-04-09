@@ -7,6 +7,7 @@ import com.smc.dao.UserDao;
 import com.smc.dao.impl.ChinesePersonDaoImpl;
 import com.smc.injection.ConstructInjectionBean;
 import com.smc.injection.SetterInjectionBean;
+import com.smc.lookup.LookupBean;
 
 public class MyTest {
 	
@@ -35,6 +36,18 @@ public class MyTest {
 			SetterInjectionBean setterInjectionBean = ac.getBean("setterInjectionBean", SetterInjectionBean.class);
 			setterInjectionBean.display();
 			
+			LookupBean lookupBean = (LookupBean)ac.getBean("lookupBean", LookupBean.class);
+			System.out.println("=========First Time ========");
+			lookupBean.getCurrentTime().printCurrentTime();
+			System.out.println("=========Create Time ========");
+			Thread.sleep(2345);
+			lookupBean.createCurrentTime().printCurrentTime();
+			Thread.sleep(12345);
+			System.out.println("=========Second Time ========");
+			lookupBean = (LookupBean)ac.getBean("lookupBean", LookupBean.class);
+			lookupBean.getCurrentTime().printCurrentTime();
+			System.out.println("=========Create Time ========");
+			lookupBean.createCurrentTime().printCurrentTime();
 		}catch(Exception e)
 		{
 			System.out.println(e.toString());
